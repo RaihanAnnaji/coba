@@ -87,7 +87,7 @@ const StatistikContent = () => {
     router.replace(`/statistik${paramsString ? `?${paramsString}` : ""}`);
 
     fetchDatasets(currentPage, keyword, opdSelected, urusanSelected);
-  }, [currentPage, keyword, opdSelected, urusanSelected]);
+  }, [currentPage, keyword, opdSelected, urusanSelected, router]);
 
   useEffect(() => {
     if ((initialOPD.length > 0 || initialUrusan.length > 0) && filterRef.current) {
@@ -95,7 +95,7 @@ const StatistikContent = () => {
         filterRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 300);
     }
-  }, []);
+  }, [initialOPD.length, initialUrusan.length]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -112,7 +112,7 @@ const StatistikContent = () => {
     <div className="min-h-screen pt-20 bg-gradient-to-br from-green-50 via-white to-green-100">
       <div className="max-w-7xl mx-auto px-8 md:px-20">
         <div className="mb-3 text-sm text-gray-600">
-          <a href="/" className="text-teal-700 hover:underline">Beranda</a>
+          <Link href="/" className="text-teal-700 hover:underline">Beranda</Link>
           <span className="ml-1 font-medium">&gt; Dataset</span>
         </div>
 
