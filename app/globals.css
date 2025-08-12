@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+.nav-item {
+  position: relative;
+  padding-left: 0;
+  padding-bottom: 3px;
+  display: inline-block;
+  text-align: center;
+}
+
+.card-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.card-wrapper {
+  scrollbar-width: none;
+}
+
+/* DESKTOP*/
+@media (min-width: 768px) {
+  .nav-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-item:hover::after,
+  .nav-item.active::after {
+    background-color: #01bba6;
+  }
+}
+
+/* MOBILE*/
+@media (max-width: 767px) {
+  .nav-item::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background-color: transparent;
+    margin-right: 0.5rem;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-item:hover::before,
+  .nav-item.active::before {
+    background-color: #01bba6;
+  }
+}
