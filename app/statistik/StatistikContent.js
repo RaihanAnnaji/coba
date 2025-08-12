@@ -106,6 +106,14 @@ const StatistikContent = () => {
 
   const handleSearch = () => {
     setCurrentPage(1);
+    setPageBlockStart(1);
+  };
+
+  // Helper untuk reset page saat filter berubah
+  const updateFilter = (setter, val) => {
+    setter(val);
+    setCurrentPage(1);
+    setPageBlockStart(1);
   };
 
   return (
@@ -126,9 +134,9 @@ const StatistikContent = () => {
               opdList={opdList}
               urusanList={urusanList}
               opdSelected={opdSelected}
-              setOpdSelected={setOpdSelected}
+              setOpdSelected={(val) => updateFilter(setOpdSelected, val)}
               urusanSelected={urusanSelected}
-              setUrusanSelected={setUrusanSelected}
+              setUrusanSelected={(val) => updateFilter(setUrusanSelected, val)}
             />
           </div>
 
