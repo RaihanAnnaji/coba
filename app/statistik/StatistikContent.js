@@ -7,7 +7,7 @@ import FilterSidebar from "../../components/statistik/FilterSidebar";
 import Pagination from "../../components/statistik/Pagination";
 import SearchBar1 from "../../components/statistik/SearchBar1";
 
-const StatistikPage = () => {
+const StatistikContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const filterRef = useRef(null);
@@ -54,8 +54,8 @@ const StatistikPage = () => {
       const res = await fetch(`/api/proxy-statistik?${params}`);
       const json = await res.json();
 
-      // Gunakan panjang data jika total tidak akurat
-      const actualTotal = json.total && json.total >= 0 ? json.total : (json.data?.length || 0);
+      const actualTotal =
+        json.total && json.total >= 0 ? json.total : (json.data?.length || 0);
 
       setDatasets(json.data || []);
       setTotalItems(actualTotal);
@@ -171,4 +171,4 @@ const StatistikPage = () => {
   );
 };
 
-export default StatistikPage;
+export default StatistikContent;
